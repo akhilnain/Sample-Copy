@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Sample Copy</string>
+    <string name="movies">Movies</string>
+    <string name="web_series">Web Series</string>
+    <string name="todo">TODO</string>
+</resources>
