@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--This is a list whose particular element is in a another xml file that is movielistview
 that mean each view of this list is seen in that way-->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rclview"
     android:background="@drawable/bg">
-    <ListView
-        android:id="@+id/listview_movies"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:dividerHeight="10.0sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="100dp"/>
 
-</RelativeLayout>
+</androidx.recyclerview.widget.RecyclerView>

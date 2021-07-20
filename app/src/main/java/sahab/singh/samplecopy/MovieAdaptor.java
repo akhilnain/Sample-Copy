@@ -10,22 +10,48 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.core.Context;
 
 import java.util.ArrayList;
 
-public class MovieAdaptor extends ArrayAdapter<MoviesData> {
+public class MovieAdaptor extends RecyclerView.Adapter<myViewHolder> {
+    ArrayList<MoviesData> data;
+    Movies_Activity context;
 
-    public MovieAdaptor(Activity context, ArrayList<MoviesData> moviesData) {
-        // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
-        // the second argument is used when the ArrayAdapter is populating a single TextView.
-        // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
-        // going to use this second argument, so it can be any value. Here, we used 0.
-        super(context, 0, moviesData);
+    public MovieAdaptor(Movies_Activity context, ArrayList<MoviesData> data) {
+        this.data = data;
+        this.context=context;
     }
 
     @NonNull
+    @Override
+    public myViewHolder onCreateViewHolder(@NonNull  ViewGroup parent, int viewType) {
+        LayoutInflater inflater=LayoutInflater.from(parent.getContext());
+        View view=inflater.inflate(R.layout.movie_custom_list,parent,false);
+        return new myViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull  myViewHolder holder, int position) {
+        holder.name.setText(data.get(position).getName());
+        holder.year.setText(data.get(position).getYear());
+        Glide.with(holder.image.getContext())
+                .load(data.get(position).getPhotoUrl())
+                .into(holder.image);
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return data.size();
+    }
+
+
+
+    /*@NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
@@ -61,5 +87,5 @@ public class MovieAdaptor extends ArrayAdapter<MoviesData> {
         // Return the whole list item layout (containing 2 TextViews and an ImageView)
         // so that it can be shown in the ListView
         return listItemView;
-    }
+    }*/
 }

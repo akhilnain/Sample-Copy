@@ -1,5 +1,7 @@
 package sahab.singh.samplecopy;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 public class Movies_Activity extends AppCompatActivity {
+    FirebaseDatabase mFirebaseDatabase;
+    DatabaseReference mFirebaseDatabaseReference;
+    ChildEventListener mChildEventListner;
+    RecyclerView recyclerView;
+    MovieAdaptor itemsAdapter;
+    ArrayList<MoviesData> moviesData = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,23 +29,22 @@ public class Movies_Activity extends AppCompatActivity {
         //getting data from last activity to know which we have to show movies /webseries
         Intent intent = getIntent();
         String str = intent.getStringExtra("Type");
-        ListView listView = findViewById(R.id.listview_movies);
-
-        FirebaseDatabase mFirebaseDatabase;
-        DatabaseReference mFirebaseDatabaseReference;
-        ChildEventListener mChildEventListner;
-        ArrayList<MoviesData> moviesData = new ArrayList<>();
-        MovieAdaptor itemsAdapter = new MovieAdaptor(this, moviesData);
+        //ListView listView = findViewById(R.id.listview_movies);
+        recyclerView=findViewById(R.id.rclview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseDatabaseReference = mFirebaseDatabase.getReference().child(str);
-        listView.setAdapter(itemsAdapter);
+        itemsAdapter = new MovieAdaptor(this, moviesData);
+        recyclerView.setAdapter(itemsAdapter);
         //child event listner
         mChildEventListner = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
                 MoviesData data = snapshot.getValue(MoviesData.class);
-                itemsAdapter.add(data);
+                moviesData.add(data);
+               itemsAdapter.notifyDataSetChanged();
             }
 
             @Override
