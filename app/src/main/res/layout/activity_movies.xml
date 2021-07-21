@@ -2,7 +2,6 @@
 <!--This is a list whose particular element is in a another xml file that is movielistview
 that mean each view of this list is seen in that way-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg">
@@ -11,7 +10,6 @@ that mean each view of this list is seen in that way-->
         android:id="@+id/rclview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:layout_marginBottom="70dp"/>
 
 </RelativeLayout>

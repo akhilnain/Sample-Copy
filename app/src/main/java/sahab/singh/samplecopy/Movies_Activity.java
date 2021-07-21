@@ -1,11 +1,11 @@
 package sahab.singh.samplecopy;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ListView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -41,29 +41,29 @@ public class Movies_Activity extends AppCompatActivity {
         //child event listner
         mChildEventListner = new ChildEventListener() {
             @Override
-            public void onChildAdded(DataSnapshot snapshot, String previousChildName) {
+            public void onChildAdded(@NonNull DataSnapshot snapshot, String previousChildName) {
                 MoviesData data = snapshot.getValue(MoviesData.class);
                 moviesData.add(data);
                itemsAdapter.notifyDataSetChanged();
             }
 
             @Override
-            public void onChildChanged(DataSnapshot snapshot, String previousChildName) {
+            public void onChildChanged(@NonNull DataSnapshot snapshot, String previousChildName) {
 
             }
 
             @Override
-            public void onChildRemoved(DataSnapshot snapshot) {
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
             }
 
             @Override
-            public void onChildMoved(DataSnapshot snapshot, String previousChildName) {
+            public void onChildMoved(@NonNull DataSnapshot snapshot, String previousChildName) {
 
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         };

@@ -22,6 +22,7 @@ public class MoviesData {
     private String official_source;
     private String photoUrl;
     private String year;
+    private String zTrailer;
     public MoviesData() {
     }
 
@@ -29,7 +30,7 @@ public class MoviesData {
                       boolean mCrimeChecked, boolean mEnglishChecked, boolean mFantasyChecked, boolean mHindiChecked,
                       boolean mHistoricalChecked, boolean mHorrorChecked, boolean mPunjabiChecked, boolean mRomanceChecked,
                       boolean mScience_fictionChecked, boolean mTamilChecked, boolean mTeluguChecked, boolean mThrillerChecked,
-                      boolean mWebSeries, String name, String official_source, String photoUrl, String year) {
+                      boolean mWebSeries, String name, String official_source, String photoUrl, String year,String zTrailer) {
         this.fileurl = fileurl;
         this.mActionChecked = mActionChecked;
         this.mAdventureChecked = mAdventureChecked;
@@ -51,6 +52,15 @@ public class MoviesData {
         this.official_source = official_source;
         this.photoUrl = photoUrl;
         this.year = year;
+        this.zTrailer= zTrailer;
+    }
+
+    public String getzTrailer() {
+        return zTrailer;
+    }
+
+    public void setzTrailer(String zTrailer) {
+        this.zTrailer = zTrailer;
     }
 
     public String getFileurl() {
