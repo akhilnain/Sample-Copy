@@ -20,22 +20,22 @@ public class Movies_Activity extends AppCompatActivity {
     RecyclerView recyclerView;
     MovieAdaptor itemsAdapter;
     ArrayList<MoviesData> moviesData = new ArrayList<>();
-
-
+    String string;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movies);
         //getting data from last activity to know which we have to show movies /webseries
-        Intent intent = getIntent();
-        String str = intent.getStringExtra("Type");
+
         //ListView listView = findViewById(R.id.listview_movies);
         recyclerView=findViewById(R.id.rclview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        Intent intent = getIntent();
+        string = intent.getStringExtra("Type");
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mFirebaseDatabaseReference = mFirebaseDatabase.getReference().child(str);
+        mFirebaseDatabaseReference = mFirebaseDatabase.getReference().child(string);
         itemsAdapter = new MovieAdaptor(this, moviesData);
         recyclerView.setAdapter(itemsAdapter);
         //child event listner

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import sahab.singh.samplecopy.Movies_Activity;
 
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,18 @@ public class MovieAdaptor extends RecyclerView.Adapter<myViewHolder> {
 
         holder.itemView.setOnClickListener(v -> {
             Intent i = new Intent(context, DescActivity.class);
-            i.putExtra("title",data.get(position).getName());
+
+            i.putExtra("name",data.get(position).getName());
+            i.putExtra("year",data.get(position).getYear());
+            i.putExtra("image",data.get(position).getPhotoUrl());
+            i.putExtra("file link",data.get(position).getFileurl());
+            i.putExtra("trailer",data.get(position).getzTrailer());
+            i.putExtra("hindi",data.get(position).ismHindiChecked());
+            i.putExtra("english",data.get(position).ismEnglishChecked());
+            i.putExtra("punjabi",data.get(position).ismPunjabiChecked());
+            i.putExtra("tamil",data.get(position).ismTamilChecked());
+            i.putExtra("telugu",data.get(position).ismTeluguChecked());
+
             context.startActivity(i);
         });
     }
