@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Sample Copy</string>
+    <string name="movies">Movies</string>
+    <string name="web_series">Web Series</string>
+    <string name="todo">TODO</string>
     <string name="holds_the_trailer_link_from_youtube">Holds the Trailer Link from Youtube</string>
     <string name="to_show_play_button_on_image">To show Play Button on Image</string>
+    <string name="name_of_movie_web_series">Name of Movie/Web series</string>
+    <string name="year">Year</string>
     <string name="audio">Audio</string>
     <string name="link">-: Link :-</string>
     <string name="link_not_found">:- Link not Found -:</string>
+    <string name="request_movie_web_series">Request Movie/Web Series</string>
+    <string name="request">Request</string>
 </resources>

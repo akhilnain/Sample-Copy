@@ -57,7 +57,7 @@ public class DescActivity extends AppCompatActivity {
                 descYear = findViewById(R.id.desc_year),
                 descAudio = findViewById(R.id.desc_audio);
         Button descLink = findViewById(R.id.desc_link),
-                descDamageRequest = findViewById(R.id.desc_damagerequest);
+                descDamageRequest = findViewById(R.id.desc_damage_request);
 
 
         descName.setText(name);//setting name to textview

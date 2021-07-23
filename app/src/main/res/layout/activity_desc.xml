@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:id="@+id/desc_name"
-            android:text="@string/name_of_movie_webseries"
+            android:text="@string/name_of_movie_web_series"
             android:textSize="25sp"
             android:textColor="@color/white"
             android:textAlignment="center"
@@ -86,15 +86,17 @@
             android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:text="@string/link"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="50dp"
             android:backgroundTint="@android:color/black"/>
         <Button
-            android:id="@+id/desc_damagerequest"
+            android:id="@+id/desc_damage_request"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="bottom"
             android:text="@string/link_not_found"
+            android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="50dp"
             android:backgroundTint="@android:color/black"/>
