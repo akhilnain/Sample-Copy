@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import sahab.singh.samplecopy.Movies_Activity;
 
 
 import androidx.annotation.NonNull;
@@ -23,7 +22,7 @@ public class MovieAdaptor extends RecyclerView.Adapter<myViewHolder> {
 
     public MovieAdaptor(Movies_Activity context, ArrayList<MoviesData> data) {
         this.data = data;
-        this.context=context;
+        this.context = context;
     }
 
     @NonNull
@@ -55,7 +54,7 @@ public class MovieAdaptor extends RecyclerView.Adapter<myViewHolder> {
             i.putExtra("english",data.get(position).ismEnglishChecked());
             i.putExtra("punjabi",data.get(position).ismPunjabiChecked());
             i.putExtra("tamil",data.get(position).ismTamilChecked());
-            i.putExtra("telugu",data.get(position).ismTeluguChecked());
+            i.putExtra("telugu", data.get(position).ismTeluguChecked());
 
             context.startActivity(i);
         });
@@ -64,5 +63,10 @@ public class MovieAdaptor extends RecyclerView.Adapter<myViewHolder> {
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void filteredList(ArrayList<MoviesData> filterList) {
+        data = filterList;
+        notifyDataSetChanged();
     }
 }
