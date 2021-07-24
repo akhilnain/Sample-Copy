@@ -2,9 +2,17 @@ package sahab.singh.samplecopy;
 
 
 import android.content.Intent;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+
 
 
 import androidx.annotation.NonNull;
@@ -13,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import com.google.android.gms.ads.AdRequest;
 
 import java.util.ArrayList;
 
@@ -55,6 +64,7 @@ public class MovieAdaptor extends RecyclerView.Adapter<myViewHolder> {
             i.putExtra("punjabi",data.get(position).ismPunjabiChecked());
             i.putExtra("tamil",data.get(position).ismTamilChecked());
             i.putExtra("telugu", data.get(position).ismTeluguChecked());
+            generateAd();
 
             context.startActivity(i);
         });
@@ -68,5 +78,29 @@ public class MovieAdaptor extends RecyclerView.Adapter<myViewHolder> {
     public void filteredList(ArrayList<MoviesData> filterList) {
         data = filterList;
         notifyDataSetChanged();
+    }
+    public  void generateAd(){
+        //InterstitialAds
+        MobileAds.initialize(context, initializationStatus -> {
+        });
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        InterstitialAd.load(context,"ca-app-pub-9515920771619716/1894837617", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        interstitialAd.show(context);
+
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+
+                    }
+                });
+
     }
 }
