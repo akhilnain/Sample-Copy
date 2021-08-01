@@ -44,8 +44,6 @@ public class Movies_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_movies);
 
 
-
-
         //Banner Ads
         {
             MobileAds.initialize(this, initializationStatus -> {
