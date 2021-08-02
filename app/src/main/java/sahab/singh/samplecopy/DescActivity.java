@@ -30,22 +30,31 @@ public class DescActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc);
 
-        String name,year,image,file_link,trailer;
-        boolean hindi,english,punjabi,tamil,telugu;
+        String name, year, image, file_link, trailer;
+        boolean hindi, english, punjabi, tamil, telugu;
 
         Intent intent = getIntent();
 
         name = intent.getStringExtra("name");//getting name of movie /web series from the last activity
         year = intent.getStringExtra("year");//getting year of release of movie /web series from the last activity
-        image = intent.getStringExtra("image");//getting image link of movie /web series from the last activity
-        file_link = intent.getStringExtra("file link");//getting file link of movie /web series from the last activity
-        trailer = intent.getStringExtra("trailer");//getting trailer link of movie /web series from the last activity
+        image = intent.getStringExtra("image");
+        if (image.isEmpty()) {
+            image = "https://creativereview.imgix.net/content/uploads/2019/12/joker_full.jpg?auto=compress,format&q=60&w=1012&h=1500";
+        }//getting image link of movie /web series from the last activity
+        file_link = intent.getStringExtra("file link");
+        if (file_link.isEmpty()) {
+            file_link = "https://t.me/joinchat/oxdTSdX9NX8wZjM9";
+        }//getting file link of movie /web series from the last activity
+        trailer = intent.getStringExtra("trailer");
+        if (trailer.isEmpty()) {
+            trailer = "https://youtu.be/w6tx63zYkd0";
+        }//getting trailer link of movie /web series from the last activity
 
-        hindi = intent.getBooleanExtra("hindi",false);
-        english = intent.getBooleanExtra("english",false);
-        tamil = intent.getBooleanExtra("tamil",false);
-        punjabi = intent.getBooleanExtra("punjabi",false);
-        telugu = intent.getBooleanExtra("telugu",false);
+        hindi = intent.getBooleanExtra("hindi", false);
+        english = intent.getBooleanExtra("english", false);
+        tamil = intent.getBooleanExtra("tamil", false);
+        punjabi = intent.getBooleanExtra("punjabi", false);
+        telugu = intent.getBooleanExtra("telugu", false);
 
         FirebaseDatabase fb;
         fb = FirebaseDatabase.getInstance();
@@ -67,8 +76,9 @@ public class DescActivity extends AppCompatActivity {
                 .load(image)
                 .into(descImage);
 
+        String finalTrailer = trailer;
         descImage.setOnClickListener(v -> { //setting on click listener to  image by getting link from firebase
-            Intent intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(trailer));
+            Intent intent2 = new Intent(Intent.ACTION_VIEW, Uri.parse(finalTrailer));
             intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent2.setPackage("com.google.android.youtube");
             startActivity(intent2);
@@ -95,11 +105,12 @@ public class DescActivity extends AppCompatActivity {
 
         descAudio.setText(stringBuffer);//setting types of audio to text field
 
+        String finalFile_link = file_link;
         descLink.setOnClickListener(v -> {
             final String appName = "org.telegram.messenger";
             final boolean isAppInstalled = isPackageInstalled(getPackageManager());
             if (isAppInstalled) {
-                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(file_link));
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(finalFile_link));
 
                 myIntent.setPackage(appName);
 

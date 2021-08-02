@@ -44,6 +44,7 @@ that mean each view of this list is seen in that way-->
         android:layout_height="40dp"
         android:id="@+id/pgbar"
         android:layout_centerInParent="true" />
+
     <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"

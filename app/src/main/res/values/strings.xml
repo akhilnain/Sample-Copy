@@ -10,7 +10,7 @@
     <string name="audio">Audio</string>
     <string name="link">-: Link :-</string>
     <string name="link_not_found">:- Link not Found -:</string>
-    <string name="request_movie_web_series">Request Movie/Web Series</string>
+    <string name="request_movie_web_series">Request Movie/Web Series Here</string>
     <string name="request">Request</string>
     <string name="search_here">Search here...</string>
 </resources>
